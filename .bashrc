@@ -100,6 +100,10 @@ function cdf() {
 	cd $(find $1 -maxdepth 4 -type d | grep -v "\(.git\|.nvm\|.cache\|.node_modules\|.rvm\|.vscode\|.glibc.\|.local\|.m2\|venv\)" | fzf)
 }
 
+function brightness() {
+	xrandr --output eDP-1 --brightness $1
+}
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -162,6 +166,9 @@ alias docker-run='docker run --rm -it --expose 8081 -p 8081:8081'
 alias notes='vim ~/Documents/extras/piroquette.ls'
 alias story='vim ~/Documents/extras/catalan.ls'
 
+alias vim='nvim'
+alias vi='vim'
+
 # set key repeat delay and rate
 eval "$(xset r rate 250 30)"
 
@@ -174,3 +181,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
+
+export GPG_TTY=$(tty)

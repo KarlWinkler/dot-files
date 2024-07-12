@@ -24,7 +24,7 @@ font pango:monospace 8
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/i3lock-color/examples/lock.sh
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -117,7 +117,7 @@ bindsym $mod+p focus parent
 
 # focus the child container
 bindsym $mod+g focus child
-	
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -168,8 +168,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-#gaps inner 8
-#gaps outer 5
+gaps inner 0
+gaps outer -0
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -215,6 +215,7 @@ client.unfocused        #444054 #2F243A #DB8A74 #A31621   #444054
 
 assign [class="discord"] $ws4
 assign [class="calendar"] $ws5
+assign [class="obsidian"] $ws5
 
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton
@@ -227,4 +228,9 @@ exec --no-startup-id kitty; workspace $3
 exec --no-startup-id kitty; workspace $3
 exec --no-startup-id kitty; workspace $3
 exec --no-startup-id kitty; workspace $3
+exec --no-startup-id obsidian; workspace $5
 
+exec xinput set-prop "ASUE1213:00 04F3:3294 Touchpad" "libinput Tapping Enabled" 1
+exec xset 250 30
+exec xset -dpms
+exec xset s off
